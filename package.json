@@ -1,0 +1,31 @@
+{
+  "name": "v-upload",
+  "version": "0.0.1",
+  "description": "Vue Component for upload a file with drag and drop, and out data will be json with data in base64 formate",
+  "main": "VUpload.vue",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codegor/v-upload.git"
+  },
+  "keywords": [
+    "vue",
+    "upload",
+    "v-upload",
+    "base64",
+    "json",
+    "file upload",
+    "upload base64"
+  ],
+  "author": "codeegor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codegor/v-upload/issues"
+  },
+  "homepage": "https://github.com/codegor/v-upload#readme",
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
