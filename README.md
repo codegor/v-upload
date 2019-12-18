@@ -75,7 +75,7 @@ export default {
 
 ## Suggest
 
-For create img src or show pdf or xls file on new browser window you can use package satellite [vue-small-plugin](https://www.npmjs.com/package/vue-small-plugin)
+For create from base64 img src or show pdf or xls file on new browser window you can use package satellite [vue-small-plugin](https://www.npmjs.com/package/vue-small-plugin)
 
 ## License
 

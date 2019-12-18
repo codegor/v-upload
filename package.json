@@ -1,6 +1,6 @@
 {
   "name": "v-upload-base64",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Vue Component for upload a file with drag and drop, and out data will be json with data in base64 formate",
   "main": "VUpload.vue",
   "scripts": {
