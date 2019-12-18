@@ -40,7 +40,7 @@ export default {
   data () {
     return {
       form: {
-        file: {}
+        file: []
       }
     }
   },
