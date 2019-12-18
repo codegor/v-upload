@@ -1,22 +1,22 @@
-# v-upload
+# v-upload-base64
 
 > File upload component for Vue.js
 
 <p>
-  <a href="https://www.npmjs.com/package/v-upload"><img src="https://img.shields.io/npm/dm/v-upload.svg" alt="Downloads"></a>
-  <a href="https://www.npmjs.com/package/v-upload"><img src="https://img.shields.io/npm/v/v-upload.svg" alt="Version"></a>
-  <a href="https://www.npmjs.com/package/v-upload"><img src="https://img.shields.io/npm/l/v-upload.svg" alt="License"></a>
+  <a href="https://www.npmjs.com/package/v-upload-base64"><img src="https://img.shields.io/npm/dm/v-upload-base64.svg" alt="Downloads"></a>
+  <a href="https://www.npmjs.com/package/v-upload-base64"><img src="https://img.shields.io/npm/v/v-upload-base64.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/v-upload-base64"><img src="https://img.shields.io/npm/l/v-upload-base64.svg" alt="License"></a>
 </p>
 
 ## Installation
 
 ### Using yarn
 
-`yarn add v-upload`
+`yarn add v-upload-base64`
 
 ### Using npm
 
-`npm i --save v-upload`
+`npm i --save v-upload-base64`
 
 ## Usage
 
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import VUpload from 'v-upload';
+import VUpload from 'v-upload-base64';
 
 export default {
   data () {
