@@ -73,6 +73,10 @@ export default {
 | **input**    | _event_: File Object or [File, File,...] | Triggered after File readed from disk              |
 | **update**   | _event_: [File, File,...]                | Triggered after File readed from disk              |
 
+## Suggest
+
+For create img src or show pdf or xls file on new browser window you can use package satellite [vue-small-plugin](https://www.npmjs.com/package/vue-small-plugin)
+
 ## License
 
 This project is licensed under
