@@ -65,6 +65,7 @@ export default {
 | **multiple** | Boolean  | False    | False     | If you want to select multiple file should be true                          |
 | **types**    | String   | False    | 'image/*' | Types for inpyt type file                                                   |
 | **clear**    | Boolean  | False    | True      | Clear internal container if select another file(s)                          |
+| **debug**    | Boolean  | False    | True      | Show debug information                                                  |
 
 #### Events
 
