@@ -20,7 +20,8 @@
       camera:   {type: Boolean, default: false},
       types:    {type: String, default: 'image/*'}, //application/pdf,application/vnd.ms-word,application/vnd.ms-excel
       multiple: {type: Boolean, default: false},
-      clear: {type: Boolean, default: true}
+      clear: {type: Boolean, default: true},
+      debug: {type: Boolean, default: true}
     },
     data () {
       return {
@@ -35,6 +36,9 @@
       accept(){
         return this.camera ? 'image/*' : this.types;
       },
+      mimes(){
+        return this.accept.split(',')
+      }
     },
     watch: {},
     created() {},
@@ -64,10 +68,22 @@
         this.$emit('input', res);
         this.$emit('update', this.files);
       },
+      check(mime){
+        let r = false;
+        this.mimes.forEach(v => {
+          if(v.includes('*')){
+            let e = new RegExp(v.replace(/[-/.]/g, '\\$&').replace(/[*]/g, '.$&'))
+            r = r ? r : e.test(mime);
+          } else
+            r = r ? r : v == mime;
+        });
+        return r;
+      },
 
       newFile(e){
         // if(this.$debug) console.log('files to uploads', e.target.files);
         let res = [];
+        let old = JSON.parse(JSON.stringify(this.files));
         if(this.clear)
           this.files = [];
 
@@ -87,14 +103,24 @@
               res.type = type.toLocaleLowerCase();
               res.mime = f.type;
               fields.file = res;
+
+              if(this.check(res.mime))
+                this.files.push(fields);
+              else {
+                if(this.debug)
+                  console.error('v-upload cannot save file with mime '+res.mime+', because its not present in types');
+                this.$emit('e_mime', res.mime);
+              }
+
               resolve();
             };
             fr.onerror = (e) => {reject();};
-            this.files.push(fields);
           }));
         });
 
         Promise.all(res).then((e) => {
+          if(0 == this.files.length)
+            this.files = old;
           this.save();
         });
       },
