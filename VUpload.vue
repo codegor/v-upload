@@ -20,8 +20,9 @@
       camera:   {type: Boolean, default: false},
       types:    {type: String, default: 'image/*'}, //application/pdf,application/vnd.ms-word,application/vnd.ms-excel
       multiple: {type: Boolean, default: false},
-      clear: {type: Boolean, default: true},
-      debug: {type: Boolean, default: true}
+      clear:    {type: Boolean, default: true},
+      debug:    {type: Boolean, default: true},
+      maxSize:  {type: Number, default: 0}, // Mb
     },
     data () {
       return {
@@ -107,12 +108,22 @@
               res.mime = f.type;
               fields.file = res;
 
-              if(this.check(res.mime))
+              let mimeCheck = this.check(res.mime);
+              let sizeCheck = 0 != this.maxSize ? res.size <= this.maxSize*1024*1024 : true;
+
+              if(mimeCheck && sizeCheck)
                 this.files.push(fields);
               else {
-                if(this.debug)
-                  console.error('v-upload cannot save file with mime '+res.mime+', because its not present in types');
-                this.$emit('e_mime', res.mime);
+                if(!mimeCheck){
+                  if(this.debug)
+                    console.error('v-upload cannot save file with mime '+res.mime+', because its not present in types', fields);
+                  this.$emit('e_mime', res.mime);
+                }
+                if(!sizeCheck){
+                  if(this.debug)
+                    console.error('v-upload cannot save file '+res.name+', because its size is '+Math.round(res.size*100/1024/1024)/100+'Mb, but Max size is '+this.maxSize+'Mb', fields);
+                  this.$emit('e_size', res.size);
+                }
               }
 
               resolve();

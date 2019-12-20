@@ -65,7 +65,8 @@ export default {
 | **multiple** | Boolean  | False    | False     | If you want to select multiple file should be true                          |
 | **types**    | String   | False    | 'image/*' | Types for inpyt type file                                                   |
 | **clear**    | Boolean  | False    | True      | Clear internal container if select another file(s)                          |
-| **debug**    | Boolean  | False    | True      | Show debug information                                                  |
+| **debug**    | Boolean  | False    | True      | Show debug information                                                      |
+| **maxSize**  | Number   | False    | 0         | Max size of file for upload in 'Mb', 0 = any size                           |
 
 #### Events
 
