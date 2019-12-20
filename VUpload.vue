@@ -70,6 +70,9 @@
       },
       check(mime){
         let r = false;
+        if('' == this.accept)
+          return true;
+
         this.mimes.forEach(v => {
           if(v.includes('*')){
             let e = new RegExp(v.replace(/[-/.]/g, '\\$&').replace(/[*]/g, '.$&'))
