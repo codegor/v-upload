@@ -2,7 +2,7 @@
   <div @drop.stop.prevent="drop" @dragenter.stop.prevent="setDrug" @dragleave.stop.prevent="offDrug"
     @dragover.stop.prevent="setDrug" :style="dropst">
     <slot :open="open"></slot>
-    <input ref="file" type="file" :capture="capture" :multiple="multiple" :accept="accept"
+    <input ref="file" type="file" :value="val" :capture="capture" :multiple="multiple" :accept="accept"
       @change="newFile" style='display:none'/>
   </div>
 </template>
@@ -23,9 +23,11 @@
       clear:    {type: Boolean, default: true},
       debug:    {type: Boolean, default: true},
       maxSize:  {type: Number, default: 0}, // Mb
+      disabled: {type: Boolean, default: false},
     },
     data () {
       return {
+        val: '',
         files: [],
         dropst: {}
       };
@@ -48,16 +50,19 @@
       drop(e){
         this.offDrug();
         // console.log(e.dataTransfer.files);
-        this.newFile({target: e.dataTransfer});
+        if(!this.disabled)
+          this.newFile({target: e.dataTransfer});
       },
       setDrug(){
-        this.dropst = {border: '1px dashed'};
+        if(!this.disabled)
+          this.dropst = {border: '1px dashed'};
       },
       offDrug(){
         this.dropst = {};
       },
       open(){
-        this.$refs.file.click();
+        if(!this.disabled)
+          this.$refs.file.click();
       },
       save(){
         let res;

@@ -67,6 +67,7 @@ export default {
 | **clear**    | Boolean  | False    | True      | Clear internal container if select another file(s)                          |
 | **debug**    | Boolean  | False    | True      | Show debug information                                                      |
 | **maxSize**  | Number   | False    | 0         | Max size of file for upload in 'Mb', 0 = any size                           |
+| **disabled** | Boolean  | False    | False     | Set true for disable ability for upload anything                            |
 
 #### Events
 
